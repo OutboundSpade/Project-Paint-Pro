@@ -3,7 +3,7 @@
 header {
   font-family: "Fontdiner Swanky";
   text-align: center;
-  margin-top: 15vh;
+  margin-top: 1vh;
   font-size: 150%;
 }
 
@@ -49,33 +49,50 @@ header {
 
 .logos #mainlogo {
   display: block;
-  margin: 8% auto 5% auto;
+  margin: 5% auto 0 auto;
   width: 30%;
 }
 
 .logos #secondlogo {
-  display: inline;
-  margin: 8% auto 5% auto;
-  width: 30%;
+  text-align: center;
+  display: inline-block;
+  margin: 1% auto 5% auto;
+  width: 100%;
 }
 
 .module {
   display: block;
   border-top: 2px solid black;
   /* border-bottom: 2px solid black; */
+  vertical-align: middle;
+  margin: 5% 0 7% 0;
 }
 
 .module-contents {
-  display: inline-block;
+  display: block;
   /* margin-left: 5%; */
   margin: 2% 0 2% 5%;
   /*top right bottom left*/
+  /* vertical-align: middle; */
 }
 
-.module-contents span {
+.module div a {
+  display: inline-block;
+  font-size: 1.5em;
   float: left;
 }
 
-.module span a {
-  font-size: 150%;
+.iscompletedparent {
+  margin-right: 5%;
+  /* display: inline-block; */
+  /* float: right; */
+  /* text-align: right;
+  vertical-align: middle;
+  align-self: right; */
+}
+
+.iscompleted {
+  /* display: inline-block; */
+  float: right;
+  color: red;
 }

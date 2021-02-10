@@ -29,13 +29,42 @@ function flashDownload(item) {
   }
 }
 // zeisthevaluethatshallnotbechanged = Math.floor((Math.random() * 100) + 0);
-// document.getElementById('progress').setAttribute("aria-valuenow", zeisthevaluethatshallnotbechanged);
-// document.getElementById('progress').setAttribute("style", `font-size:200%;width:${document.getElementById('progress').getAttribute("aria-valuenow")}%`);
+const setProgressBar = (zeisthevaluethatshallnotbechanged) => {
+  document.getElementById('progress').innerHTML = zeisthevaluethatshallnotbechanged + '%';
+  document.getElementById('progress').setAttribute("aria-valuenow", zeisthevaluethatshallnotbechanged);
+  document.getElementById('progress').setAttribute("style", `font-size:200%;width:${document.getElementById('progress').getAttribute("aria-valuenow")}%`);
+}
 
 let totalModules;
 getPreferences((data) => {
   totalModules = JSON.parse(data)["number_of_modules"];
+
+  try {
+    let pg = JSON.parse(localStorage.getItem('things'));
+    setProgressBar(Math.round(calcPerc(pg, totalModules) * 100));
+    for (let i = 1; i <= totalModules; i++) {
+      if (pg[`${i}`] === 1) {
+        document.getElementById(`iscompleted${i}`).innerHTML = "Completed!";
+        document.getElementById(`iscompleted${i}`).style.color = "green";
+
+      }
+    }
+  } catch (error) {
+    localStorage.setItem('things', '{}');
+    alert("there was an error. progress has been erased");
+    location.reload();
+  }
 });
+
+const calcPerc = (obj, totalNumModules) => {
+  let count = 0;
+  for (let i = 1; i <= totalModules; i++) {
+    if (obj[`${i}`] === 1) {
+      count++;
+    }
+  }
+  return count / totalModules;
+}
 
 function getPreferences(callback) {
   var xobj = new XMLHttpRequest();

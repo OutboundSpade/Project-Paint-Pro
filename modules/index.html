@@ -23,16 +23,20 @@
 <body>
   <!-- PUT CODE UNDER HERE -->
   <header>
-    <button class='downloadnow topBar' onclick="downloadNow();" href="javascript:void(0);"></button>
+    <!-- <button class='downloadnow topBar' onclick="downloadNow();" href="javascript:void(0);"></button> -->
     <h1>
       Modules
     </h1>
   </header>
-  <!-- <div class="progress" style="height: 15vh;">
-    <div id='progress' class="progress-bar" role="progressbar" style="font-size:200%;width:50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">0%</div>
-  </div> -->
+  
   <div class="logos">
     <img id='mainlogo' src="../paint_pro_logo_1.png" alt="incredible ms paint pro logo"></img>
+    <div id='secondlogo'>
+      Powered by <img src="../NVideologo2.png" style="width: 10%;max-height: 5%;"></img>
+    </div>
+  </div>
+  <div class="progress" style="height: 5vh;">
+    <div id='progress' class="progress-bar" role="progressbar" style="font-size:200%;width:50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
   </div>
   <div class="allModules">
     
@@ -44,36 +48,55 @@
     </div> -->
 
     <div class="module">
-      <span class="module-contents">
-        <a href="./Module Pages/module[MODULE NUMBER].html">Module 1 - [MODULE NAME]</a>
-      </span>
+      <div class="module-contents" >
+        <a href="./Module Pages/module1.html">Module 1 - Paint Bucket</a>
+      </div>
+      <div class='iscompletedparent'>
+        <div class='iscompleted' id='iscompleted1'>Not Completed</div>
+      </div>
     </div>
 
     <div class="module">
-      <span class="module-contents">
-        <a href="./Module Pages/module[MODULE NUMBER].html">Module 2 - [MODULE NAME]</a>
-      </span>
+      <div class="module-contents" >
+        <a href="./Module Pages/module2.html">Module 2 - Hello Text</a>
+      </div>
+      <div class='iscompletedparent'>
+        <div class='iscompleted' id='iscompleted2'>Not Completed</div>
+      </div>
     </div>
 
     <div class="module">
-      <span class="module-contents">
-        <a href="./Module Pages/module[MODULE NUMBER].html">Module 3 - [MODULE NAME]</a>
-      </span>
+      <div class="module-contents" >
+        <a href="./Module Pages/module3.html">Module 3 - Parallelogram</a>
+      </div>
+      <div class='iscompletedparent'>
+        <div class='iscompleted' id='iscompleted3'>Not Completed</div>
+      </div>
     </div>
 
     <div class="module">
-      <span class="module-contents">
-        <a href="./Module Pages/module[MODULE NUMBER].html">Module 4 - [MODULE NAME]</a>
-      </span>
+      <div class="module-contents" >
+        <a href="./Module Pages/module4.html">Module 4 - Turn that frown upside down</a>
+      </div>
+      <div class='iscompletedparent'>
+        <div class='iscompleted' id='iscompleted4'>Not Completed</div>
+      </div>
     </div>
 
     <div class="module">
-      <span class="module-contents">
-        <a href="./Module Pages/module[MODULE NUMBER].html">Module 5 - [MODULE NAME]</a>
-      </span>
+      <div class="module-contents" >
+        <a href="./Module Pages/module5.html">Module 5 - Exam one stick figure</a>
+      </div>
+      <div class='iscompletedparent'>
+        <div class='iscompleted' id='iscompleted5'>Not Completed</div>
+      </div>
     </div>
 
   </div>
+
+  <footer style="margin-top: 5%;text-align: center;">
+    ©Copyright 2021 Charles Steen. All rights reserved.
+  </footer>
   <!-- PUT CODE ABOVE HERE -->
   <script src="../settings.js"></script>
   <script src="./main.js"></script>
