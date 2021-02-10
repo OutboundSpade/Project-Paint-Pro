@@ -18,6 +18,21 @@
             color: black;
             text-decoration: underline;
         }
+
+        .markdone {
+            display: block;
+            text-align: center;
+            margin: 5%;
+        }
+
+        #mkdone {
+            /* display: block; */
+            padding: 1%;
+            font-size: large;
+            border-radius: 10%;
+            border: 2px solid black;
+            /* cursor: not-allowed; */
+        }
     </style>
 
 </head>
@@ -29,7 +44,10 @@
     <p name="module_body" style="text-align:center;font-size: 150%;">
         [MODULE DESCRIPTION]
     </p>
-    <footer style="margin-top: 15%;">
+    <footer style="margin-top: 7%;">
+        <div class="markdone">
+            <button id="mkdone" onclick="complete();">Mark as Done</button>
+        </div>
         <span><button onclick="back();">
                 <- Back</button></span>
         <span style="display: block; float:right;"><button onclick="next();">Next -></button></span>
@@ -37,18 +55,28 @@
 
 
     <script>
-
         const moduleNumber = Number(document.getElementById('modnum').innerHTML);
         const back = () => {
-            location.assign(moduleNumber == 1 ? '../' : `module${moduleNumber-1}`);
+            location.assign(moduleNumber == 1 ? '../' : `module${moduleNumber - 1}`);
         }
         let totalModules;
         getPreferences((data) => {
             totalModules = JSON.parse(data)["number_of_modules"]
         });
         const next = () => {
-            if (totalModules == null || totalModules==undefined) return;
-            location.assign(moduleNumber == totalModules ? '../' : `module${moduleNumber+1}`);
+            if (totalModules == null || totalModules == undefined) return;
+            location.assign(moduleNumber == totalModules ? '../' : `module${moduleNumber + 1}`);
+        }
+        if(JSON.parse(localStorage.getItem('things'))[`${moduleNumber}`] === 1) {
+            document.getElementById('mkdone').innerHTML = 'Done!';
+            document.getElementById('mkdone').setAttribute('disabled','True');
+        }
+        const complete = () => {
+            let things = JSON.parse(localStorage.getItem('things'));
+            things[`${moduleNumber}`] = 1;
+            localStorage.setItem('things',JSON.stringify(things));
+            document.getElementById('mkdone').innerHTML = 'Done!';
+            document.getElementById('mkdone').setAttribute('disabled','True');
         }
 
 
