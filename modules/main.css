@@ -42,7 +42,7 @@ header {
 }
 
 .allModules {
-  margin-top: 7%;
+  margin-top: 5%;
   display: block;
   /* border: #00ff00 solid 2px; */
 }
@@ -62,7 +62,7 @@ header {
 .module {
   display: block;
   border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
 
 .module-contents {
@@ -77,5 +77,5 @@ header {
 }
 
 .module span a {
-  font-size: larger;
+  font-size: 150%;
 }
