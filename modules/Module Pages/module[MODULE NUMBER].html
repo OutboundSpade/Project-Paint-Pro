@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[MODULE NAME]</title>
+    <link rel="icon" href="../../luis.png" type="image/icon type">
+    <style>
+        a:link,
+        a:active,
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3 style="text-align: center;"><a href="../">Module <span id='modnum'>[MODULE NUMBER]</span></a></h3>
+    <div style="text-align: center;font-size: 300%;">[MODULE NAME]</div>
+    <img src='images/module[MODULE NUMBER].png' style="display: block;margin: 8% auto 5% auto;width: 20%;"></img>
+    <p name="module_body" style="text-align:center;font-size: 150%;">
+        [MODULE DESCRIPTION]
+    </p>
+    <footer style="margin-top: 15%;">
+        <span><button onclick="back();">
+                <- Back</button></span>
+        <span style="display: block; float:right;"><button onclick="next();">Next -></button></span>
+    </footer>
+
+
+    <script>
+
+        const moduleNumber = Number(document.getElementById('modnum').innerHTML);
+        const back = () => {
+            location.assign(moduleNumber == 1 ? '../' : `module${moduleNumber-1}`);
+        }
+        let totalModules;
+        getPreferences((data) => {
+            totalModules = JSON.parse(data)["number_of_modules"]
+        });
+        const next = () => {
+            if (totalModules == null || totalModules==undefined) return;
+            location.assign(moduleNumber == totalModules ? '../' : `module${moduleNumber+1}`);
+        }
+
+
+        function getPreferences(callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', '../preferences.json', true); // Replace 'appDataServices' with the path to your file
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        }
+    </script>
+</body>
+
+</html>
