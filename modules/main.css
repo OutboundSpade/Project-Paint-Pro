@@ -96,3 +96,11 @@ header {
   float: right;
   color: red;
 }
+
+.certclaim {
+  display: block;
+  margin-top: 2%;
+  /* margin-left: 50%; */
+  /* margin: 2% 0 2% 5%; */
+  /* text-align: center; */
+}

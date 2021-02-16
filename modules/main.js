@@ -42,12 +42,17 @@ getPreferences((data) => {
   try {
     let pg = JSON.parse(localStorage.getItem('things'));
     setProgressBar(Math.round(calcPerc(pg, totalModules) * 100));
+    let count = 0;
     for (let i = 1; i <= totalModules; i++) {
       if (pg[`${i}`] === 1) {
+        count++;
         document.getElementById(`iscompleted${i}`).innerHTML = "Completed!";
         document.getElementById(`iscompleted${i}`).style.color = "green";
-
       }
+    }
+    if (count == totalModules) {
+      console.log(`${count} / ${totalModules}`);
+      document.getElementById('certclaim').style.display = 'block';
     }
   } catch (error) {
     localStorage.setItem('things', '{}');
