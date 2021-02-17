@@ -1,10 +1,12 @@
 /* ALL HAIL LUIS! */
 
-body, html {
-  background-color:white;
+body,
+html {
+  background-color: white;
   margin-bottom: none;
   /* font-family: "Fontdiner Swanky"; */
 }
+
 footer {
   position: fixed;
   right: 0;
@@ -13,25 +15,32 @@ footer {
   /* background-color: red; */
   color: white;
   text-align: center;
-  
+
   animation: footer-animate 1s ease infinite alternate;
 }
+
 footer img {
   width: 20%;
   height: 10vh;
   filter: blur(2px);
   transform: rotate(2deg);
-  
+
 }
+
 @keyframes footer-animate {
-    0% { transform: scaleX(1.25) }
-    100% { transform: scaleX(0.75) }
+  0% {
+    transform: scaleX(1.25)
+  }
+
+  100% {
+    transform: scaleX(0.75)
+  }
 }
 
 .downloadnow {
   padding: 20px;
   font-size: 2vw;
-  background-color:#00ff00;
+  background-color: #00ff00;
   display: block;
   /* border-radius: 15px; */
   border: none;
@@ -39,13 +48,16 @@ footer img {
   outline: none;
   font-family: "Fontdiner Swanky";
 }
+
 .downloadnow:after {
   content: 'START DOWNLOAD';
 }
+
 .downloadnow:hover:after {
   content: '🔒SECURE DOWNLOAD🔒';
-  
+
 }
+
 .topBar {
   text-align: center;
   width: 100%;
@@ -55,20 +67,29 @@ footer img {
 .leftMargin {
   float: left;
   width: 25%;
-  margin:0;
+  margin: 0;
 }
+
 .rightMargin {
   float: right;
   width: 25%;
-  margin:0;
+  margin: 0;
 }
+
 .sideBar {
   margin: 0;
   width: 100%;
   height: 20vh;
 }
 
-canvas { z-index: -1;position:fixed; margin: 0;text-align: center !important;} /* Make this a positioned parent */
+canvas {
+  z-index: -1;
+  position: fixed;
+  margin: 0;
+  text-align: center !important;
+}
+
+/* Make this a positioned parent */
 
 .start {
   position: absolute;
@@ -78,14 +99,38 @@ canvas { z-index: -1;position:fixed; margin: 0;text-align: center !important;} /
   text-align: center;
   animation: start-animate 0.9s ease infinite alternate;
 }
+
 @keyframes start-animate {
-    0% { transform: rotate(30) }
-    100% { transform: rotate(-30) }
+  0% {
+    transform: rotate(30)
+  }
+
+  100% {
+    transform: rotate(-30)
+  }
 }
+
 .start img {
   /* position: absolute; */
   display: block;
   position: relative;
   width: 100%;
   text-align: center;
+  z-index: 0;
+}
+
+.logo {
+  left: 50%;
+  position: absolute;
+  margin-left: -10%;
+  z-index: 1;
+}
+
+.logo-content {
+  /* text-align: center; */
+
+}
+
+#logo {
+  width: 40%;
 }

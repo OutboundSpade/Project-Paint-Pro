@@ -7,10 +7,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../luis.png" type="image/icon type">
   <title>Certificate</title>
+  <script>
+    getPreferences((data) => {
+      const totalModules = JSON.parse(data)["number_of_modules"];
+
+      setInterval(() => {
+        try {
+          let pg = JSON.parse(localStorage.getItem('things'));
+          let count = 0;
+          for (let i = 1; i <= totalModules; i++) {
+            if (pg[`${i}`] === 1) {
+              count++;
+            }
+          }
+          if (count == totalModules) {} else {
+            location.assign('./index.html');
+          }
+        } catch (error) {
+          localStorage.setItem('things', '{}');
+          alert("there was an error. progress has been erased");
+          location.assign('./index.html');
+
+        }
+      });
+    }, 200);
+
+    function getPreferences(callback) {
+      var xobj = new XMLHttpRequest();
+      xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'preferences.json', true); // Replace 'appDataServices' with the path to your file
+      xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+          callback(xobj.responseText);
+        }
+      };
+      xobj.send(null);
+    }
+  </script>
+  <style>
+    html,
+    body {
+      margin: none;
+    }
+  </style>
 </head>
 
-<body>
+<body style="margin: 0;">
+  <canvas style='display:none;' id='canva'></canvas>
+  <img style="display: none;" id='certificateImage' src="../paint_pro_certification.png">
+  <div style=" position: relative;">
+    <div style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;margin: 0;">
+      <a id='imgLink' download><img id='newImage'></a>
+    </div>
+  </div>
+  <script>
+    getPreferences((data) => {
+      const totalModules = JSON.parse(data)["number_of_modules"];
+      try {
+        let pg = JSON.parse(localStorage.getItem('things'));
+        let count = 0;
+        for (let i = 1; i <= totalModules; i++) {
+          if (pg[`${i}`] === 1) {
+            count++;
+          }
+        }
+        if (count == totalModules) {
+          const name = prompt('Please enter your name:');
+          if (name == null || name == undefined || name == ' ' || name == '  ') {
+            location.reload();
+            return;
+          }
+          const canvas = document.getElementById("canva");
+          const ctx = canvas.getContext("2d");
+          const certImage = document.getElementById('certificateImage');
+          canvas.setAttribute('width', `${certImage.width}`);
+          canvas.setAttribute('height', `${certImage.height}`);
+          ctx.drawImage(certImage, 0, 0);
+          ctx.font = "30px Courier New";
+          ctx.textAlign = "center";
+          ctx.fillStyle = '#FF0000';
+          ctx.fillText(name, 375, 275);
 
+          const newImage = document.getElementById('newImage');
+          const newImageLink = document.getElementById('imgLink');
+          newImage.src = canvas.toDataURL("image/png");
+          newImageLink.href = canvas.toDataURL('image/png');
+        } else {
+          location.assign('./index.html');
+        }
+      } catch (error) {
+        localStorage.setItem('things', '{}');
+        alert("there was an error. progress has been erased");
+        location.assign('./index.html');
+      }
+    });
+
+    function getPreferences(callback) {
+      var xobj = new XMLHttpRequest();
+      xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'preferences.json', true); // Replace 'appDataServices' with the path to your file
+      xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+          callback(xobj.responseText);
+        }
+      };
+      xobj.send(null);
+    }
+  </script>
 </body>
 
 </html>
